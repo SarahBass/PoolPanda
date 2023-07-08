@@ -1,0 +1,6 @@
+<fonts>
+<font id = "WeatherFont" filename = "starwarsbestNumbers.fnt" filter = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%{@}=: ^()[?]_%.,-"/>
+<font id = "smallFont" filename = "bestpigstar.fnt" filter = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890{}:~ #^$![]@*+_%=~.?,-"/>
+<font id = "largeFont" filename = "cutepiggy70.fnt" filter = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890{}:~# @*^$[+=]_~?%.,-"/>
+<font id = "xsmallFont" filename = "xsmall.fnt" filter = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890{}:~ #^$![]@*+_%=~.?,-"/>
+</fonts>
