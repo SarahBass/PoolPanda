@@ -139,7 +139,7 @@ else{userHEART = getHeartRate().toString();}
 
         
        var dog = dogPhase(today.sec, today.min);
-       var object = object(today.day_of_week, today.sec);//today.day_of_week
+       var object = object(today.day, today.sec);//today.day
        var smallFont =  WatchUi.loadResource( Rez.Fonts.WeatherFont );
        var wordFont =  WatchUi.loadResource( Rez.Fonts.smallFont );
        var LargeFont =  WatchUi.loadResource( Rez.Fonts.largeFont );
@@ -316,32 +316,36 @@ private function getHeartRate() {
 
 
 
-function object(dayofweek, seconds){
+function object(day, seconds){
   var mySettings = System.getDeviceSettings();
   //0: normal 200 px 1:small 100 px 2:Large 200px 3:square
 var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
 var growY = 1;
 var size = 0;
-     
+var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
         size =1;
         growX=1;
+        speed = 0.6;
         growY=1;
       }else if (System.getDeviceSettings().screenHeight >= 390){
         size=2;
         growX=0.7;
+        speed = 1.25;
         growY=growX*growX;
       }else if (mySettings.screenShape != 1){
         size=0;
         growX=0.75;
+        speed = 0.8;
         growY=0.47;
       }else{
         size=0;
         growX=0.8;
+        speed =1;
         growY=1;
       }
   var venus2X;
- if (seconds>=35){venus2X=mySettings.screenHeight *0.17*growX;}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25);}}
+ if (seconds>=35){venus2X=mySettings.screenHeight *0.17*growX;}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25*speed);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25*speed);}}
   var venus2Y =  mySettings.screenHeight *0.03*growY ;
 var objectARRAY;
 if (seconds%2 == 0){
@@ -359,26 +363,6 @@ if (size ==1){
         })),
               (new WatchUi.Bitmap({
             :rezId=>Rez.Drawables.tuessmall,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.wedsmall,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.thurssmall,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-            (  new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.frismall,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-           ( new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.satsmall,
             :locX=> venus2X,
             :locY=>venus2Y
         }))
@@ -400,26 +384,6 @@ else if (size ==2){
             :rezId=>Rez.Drawables.tuesbig,
             :locX=> venus2X,
             :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.wedbig,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.thursbig,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-            (  new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.fribig,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-           ( new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.satbig,
-            :locX=> venus2X,
-            :locY=>venus2Y
         }))
      ];
 }else{
@@ -436,26 +400,6 @@ else if (size ==2){
         })),
               (new WatchUi.Bitmap({
             :rezId=>Rez.Drawables.tues,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.wed,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.thurs,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-            (  new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.fri,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-           ( new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.sat,
             :locX=> venus2X,
             :locY=>venus2Y
         }))
@@ -477,26 +421,6 @@ if (size ==1){
             :rezId=>Rez.Drawables.tuessmall1,
             :locX=> venus2X,
             :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.wedsmall1,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.thurssmall1,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-            (  new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.frismall1,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-           ( new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.satsmall1,
-            :locX=> venus2X,
-            :locY=>venus2Y
         }))
      ];
 }
@@ -514,26 +438,6 @@ else if (size ==2){
         })),
               (new WatchUi.Bitmap({
             :rezId=>Rez.Drawables.tuesbig1,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.wedbig1,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.thursbig1,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-            (  new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.fribig1,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-           ( new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.satbig1,
             :locX=> venus2X,
             :locY=>venus2Y
         }))
@@ -554,61 +458,45 @@ else if (size ==2){
             :rezId=>Rez.Drawables.tues1,
             :locX=> venus2X,
             :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.wed1,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-              (new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.thurs1,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-            (  new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.fri1,
-            :locX=> venus2X,
-            :locY=>venus2Y
-        })),
-           ( new WatchUi.Bitmap({
-            :rezId=>Rez.Drawables.sat1,
-            :locX=> venus2X,
-            :locY=>venus2Y
         }))
      ];
 }
 }
-  return objectARRAY[(dayofweek-1)];
+  return objectARRAY[(day%3)];
 }
 
 
 
 function dogPhase(seconds, minutes){
   var mySettings = System.getDeviceSettings();
-  var size= 0;//0: normal 200 px 1:small 100 px 2:Large 200px 3:square
-var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
+ var growX = 1; //0.75 for grow large 1.25 for shrink small 1 for normal or square
 var growY = 1;
+var size = 0;
+var speed =1;     
       if (System.getDeviceSettings().screenHeight < 301){
-        size=1;
+        size =1;
         growX=1;
+        speed = 0.6;
         growY=1;
       }else if (System.getDeviceSettings().screenHeight >= 390){
         size=2;
         growX=0.7;
+        speed = 1.25;
         growY=growX*growX;
       }else if (mySettings.screenShape != 1){
-        size=3;
+        size=0;
         growX=0.75;
+        speed = 0.8;
         growY=0.47;
       }else{
         size=0;
         growX=0.8;
+        speed =1;
         growY=1;
       }
-
   var venus2X;
-  if (seconds>=35){venus2X=mySettings.screenHeight *0.17*growX;}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25);}}
-  var venus2Y =  mySettings.screenHeight *0.05*growY ;
+ if (seconds>=35){venus2X=mySettings.screenHeight *0.17*growX;}else {if(seconds>=25){venus2X=(mySettings.screenWidth*2.5)-((seconds%35)*25*speed);}else{venus2X=(mySettings.screenWidth)-((seconds%35)*25*speed);}}
+  var venus2Y =  mySettings.screenHeight *0.03*growY ;
   var dogARRAY;
 if (size == 1){
  dogARRAY = [
