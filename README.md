@@ -51,11 +51,9 @@ Free Star Baby is a cute animated pet that earns a surprise when you reach 3000 
 
 >Alarms
 
-![tues](https://github.com/SarahBass/PoolPanda/assets/69780815/8be4505c-9674-4c11-8287-ec9e503e520c)
-
 >Battery
 
 >Phone Connection
 
 
-
+![tues](https://github.com/SarahBass/PoolPanda/assets/69780815/8be4505c-9674-4c11-8287-ec9e503e520c)
